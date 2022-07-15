@@ -1,6 +1,8 @@
 FROM golang:1.13.4 as builder
 COPY . /build/
 WORKDIR /build
+RUN ls
+RUN ls apps/plugin-drone
 RUN GOPROXY=https://goproxy.cn,direct CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o plugin-drone-dingtalk .
 
 FROM alpine
