@@ -4,7 +4,6 @@ WORKDIR /build
 RUN GOPROXY=https://goproxy.cn,direct CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o plugin-drone-dingtalk .
 
 
-
 FROM alpine
 RUN apk update \
     && apk add --no-cache ca-certificates \
