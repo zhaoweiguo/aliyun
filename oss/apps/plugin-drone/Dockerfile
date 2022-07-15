@@ -1,5 +1,5 @@
 FROM golang:1.13.4 as builder
-COPY ../.. /build/
+COPY .. /build/
 WORKDIR /build
 RUN ls
 RUN ls apps/plugin-drone
