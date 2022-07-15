@@ -22,7 +22,7 @@ jobs:
         with:
           push: true
           tags: zhaoweiguo/plugin-drone-oss:latest
-          file: oss/plugin-drone/Dockerfile
+          file: oss/apps/plugin-drone/Dockerfile
 
 
 
