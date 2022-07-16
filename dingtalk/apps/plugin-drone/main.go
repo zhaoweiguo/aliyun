@@ -114,6 +114,14 @@ func run(c *cli.Context) {
 		err = webhooker.SendTextMsg(messageTitle)
 	case webhook.MsgTypeLink:
 		err = webhooker.SendLinkMsg(messageTitle, messageText, messagePicUrl, messageUrl)
+	case webhook.MsgTypeMarkdown:
+		err = webhooker.SendMarkdownMsg(messageTitle, messageText)
+	case webhook.MsgTypeActionCard:
+		// todo multi actionCard need be implements
+		err = webhooker.SendActionCardSingle(messageTitle, messageText, "0", messageTitle, messageUrl)
+	case webhook.MsgTypeFeedCard:
+		// todo need be implements
+		err = errors.New("not support message type: " + messageType)
 	default:
 		err = errors.New("not support message type: " + messageType)
 	}
