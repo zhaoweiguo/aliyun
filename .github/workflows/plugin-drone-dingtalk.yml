@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - dingtalk/apps/plugin-drone/Dockerfile
+      - dingtalk/Dockerfile.plugin-drone
     branches:
       - master
 jobs:
@@ -22,7 +22,7 @@ jobs:
         with:
           push: true
           tags: zhaoweiguo/plugin-drone-dingtalk:latest
-          file: dingtalk/apps/plugin-drone/Dockerfile
+          file: dingtalk/Dockerfile.plugin-drone
 
 
 
