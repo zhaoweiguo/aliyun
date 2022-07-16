@@ -111,7 +111,7 @@ func run(c *cli.Context) {
 	case webhook.MsgTypeLink:
 		err = webhooker.SendLinkMsg(messageTitle, messageText, messagePicUrl, messageUrl)
 	default:
-		err = errors.New("not support message type")
+		err = errors.New("not support message type: " + messageType)
 	}
 	if err != nil {
 		panic(err)
