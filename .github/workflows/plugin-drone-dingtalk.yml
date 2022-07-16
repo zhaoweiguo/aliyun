@@ -22,7 +22,7 @@ jobs:
         with:
           push: true
           tags: zhaoweiguo/plugin-drone-dingtalk:latest
-          file: dingtalk/Dockerfile.plugin-drone
+          file: dockerfiles/Dockerfile.plugin-drone-dingtalk
 
 
 
