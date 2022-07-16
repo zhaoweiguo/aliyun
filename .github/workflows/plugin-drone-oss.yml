@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - oss/apps/plugin-drone/Dockerfile
+      - dockerfiles/Dockerfile.plugin-drone-oss
     branches:
       - master
 jobs:

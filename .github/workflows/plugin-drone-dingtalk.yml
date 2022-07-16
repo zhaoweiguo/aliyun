@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - dingtalk/Dockerfile.plugin-drone
+      - dockerfiles/Dockerfile.plugin-drone-dingtalk
     branches:
       - master
 jobs:
