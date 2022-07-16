@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: zhaoweiguo/plugin-drone-oss:latest
+          tags: zhaoweiguo/plugin-drone-oss:latest, zhaoweiguo/plugin-drone-oss:0.1.0
           file: dockerfiles/Dockerfile.plugin-drone-oss
 
 
