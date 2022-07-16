@@ -102,6 +102,10 @@ func run(c *cli.Context) {
 	messagePicUrl := c.String("message.picUrl")
 	messageUrl := c.String("message.messageUrl")
 
+	if debug {
+		log.Println(accessToken, secret, messageType, messageTitle, messageText, messagePicUrl, messageUrl)
+	}
+
 	webhooker := webhook.NewWebHook(accessToken, secret, debug)
 
 	var err error
