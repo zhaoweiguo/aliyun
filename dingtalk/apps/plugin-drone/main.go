@@ -19,6 +19,7 @@ func init()  {
 	log.SetFlags(log.Ltime | log.Lshortfile)
 	log.Println("==========================================================")
 	log.Println("======== 服务版本信息: ", Version)
+	log.Println(os.Args)
 	log.Println("==========================================================")
 }
 
