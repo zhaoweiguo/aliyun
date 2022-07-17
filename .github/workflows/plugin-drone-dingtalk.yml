@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: zhaoweiguo/plugin-drone-dingtalk:latest, zhaoweiguo/plugin-drone-dingtalk:0.1.2
+          tags: zhaoweiguo/plugin-drone-dingtalk:latest, zhaoweiguo/plugin-drone-dingtalk:0.1.3
           file: dockerfiles/Dockerfile.plugin-drone-dingtalk
 
 

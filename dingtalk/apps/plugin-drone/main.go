@@ -56,6 +56,11 @@ func main() {
 			EnvVar: "DINGTALK_MESSAGE_TYPE",
 		},
 		cli.StringFlag{
+			Name:   "message.raw,raw",
+			Usage:  "dingtalk message raw",
+			EnvVar: "DINGTALK_MESSAGE_RAW",
+		},
+		cli.StringFlag{
 			Name:   "message.title,title",
 			Usage:  "dingtalk message title",
 			EnvVar: "DINGTALK_MESSAGE_TITLE",
@@ -97,6 +102,7 @@ func run(c *cli.Context) {
 
 	messageType := c.String("message.type")
 
+	messageRaw := c.String("message.raw")
 	messageTitle := c.String("message.title")
 	messageText := c.String("message.text")
 	messagePicUrl := c.String("message.picUrl")
@@ -110,6 +116,8 @@ func run(c *cli.Context) {
 
 	var err error
 	switch (webhook.MsgType)(messageType) {
+	case webhook.MsgTypeRaw:
+		err = webhooker.SendRawMessage([]byte(messageRaw))
 	case webhook.MsgTypeText:
 		err = webhooker.SendTextMsg(messageTitle)
 	case webhook.MsgTypeLink:

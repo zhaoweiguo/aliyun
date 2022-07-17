@@ -13,6 +13,7 @@ import (
 // https://open.dingtalk.com/document/group/custom-robot-access
 
 type IWebHook interface {
+	SendRawMessage(msg string) error
 	SendMessage(msg Message) error
 	SendTextMsg(content string) error
 	SendLinkMsg(title, text, picUrl, messageUrl string) error
@@ -41,13 +42,19 @@ func (w WebHook) SendMessage(msg Message) error {
 	bs, _ := json.Marshal(msg)
 	if w.debug {
 		log.Println(string(bs))
+	}
+	return w.SendRawMessage(bs)
+}
+
+func (w WebHook) SendRawMessage(msg []byte) error {
+	if w.debug {
 		log.Println(w)
 	}
 	if w.secret != "" {
 		return errors.New("secret is not implemented")
 	}
 
-	resp, err := http.Post(w.apiUrl, "application/json", bytes.NewReader(bs))
+	resp, err := http.Post(w.apiUrl, "application/json", bytes.NewReader(msg))
 	if nil != err {
 		return errors.New("request error: " + err.Error())
 	}
@@ -101,6 +108,7 @@ func (w WebHook) SendActionCardMulti(title, text, btnOrientation string, titles,
 
 type MsgType string
 const (
+	MsgTypeRaw MsgType = "raw"
 	MsgTypeText MsgType = "text"
 	MsgTypeLink MsgType = "link"
 	MsgTypeMarkdown MsgType = "markdown"
