@@ -8,9 +8,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
-// https://open.dingtalk.com/document/group/custom-robot-access
+// 自定义机器人接入：https://open.dingtalk.com/document/group/custom-robot-access
 
 type IWebHook interface {
 	SendRawMessage(msg string) error
@@ -51,7 +52,9 @@ func (w WebHook) SendRawMessage(msg []byte) error {
 		log.Println(w)
 	}
 	if w.secret != "" {
-		return errors.New("secret is not implemented")
+		timestamp := time.Now().UnixNano() / int64(time.Millisecond)
+		sign := getSign(timestamp, w.secret)
+		w.apiUrl = fmt.Sprintf("%s&timestamp=%d&sign=%s", w.apiUrl, timestamp, sign)
 	}
 
 	resp, err := http.Post(w.apiUrl, "application/json", bytes.NewReader(msg))
