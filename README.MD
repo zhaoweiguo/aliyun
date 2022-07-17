@@ -26,8 +26,8 @@
   - [ ] actionCard 格式
   - [ ] feedCard 格式
 - 周边功能
+  - [x] 签名验证功能
   - [ ] At 功能
-  - [ ] 签名验证功能
 
 - 相关参考文档
   - 自定义机器人接入：https://open.dingtalk.com/document/group/custom-robot-access

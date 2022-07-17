@@ -13,10 +13,13 @@ import (
 
 )
 
-var Version = "0.0.1"
+var Version = "default"
 
 func init()  {
 	log.SetFlags(log.Ltime | log.Lshortfile)
+	log.Println("==========================================================")
+	log.Println("======== 服务版本信息: ", Version)
+	log.Println("==========================================================")
 }
 
 func main() {
